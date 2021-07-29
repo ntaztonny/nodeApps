@@ -1,7 +1,9 @@
+const logger = require("./logger");
+const path = require("path");
+const os = require("os");
 
-const logger = require('./logger')
-function sayHello(name){
-    console.log("Hello " + name + " welcome to Node JS!")
+function sayHello(name) {
+  console.log("Hello " + name + " welcome to Node JS!");
 }
 
 sayHello("Tonny");
@@ -9,6 +11,9 @@ console.log("========================================");
 console.log(module);
 console.log("========================================");
 logger.log("This is my website: " + logger.url);
+
+console.log(path.parse(__filename));
+console.log(os.freemem());
 
 module.exports.sayHello = sayHello;
 
@@ -23,5 +28,3 @@ setInterval()
 clearInterval()
 
 */
-
-
