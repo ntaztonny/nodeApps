@@ -4,9 +4,14 @@ const os = require("os");
 const http = require("http");
 const express = require("express");
 const exp = require("constants");
+const middlware = require("./Morexeress");
 
 const expressServer = express();
 expressServer.use(express.json());
+expressServer.use(express.urlencoded());
+
+expressServer.use(middlware.logFunction);
+expressServer.use(middlware.AuthFunction);
 
 const courses = [
   { id: 356476564, name: "Ntambaazi Tonny revolution" },
@@ -26,6 +31,9 @@ const server = http.createServer((request, response) => {
 });
 
 //express Server
+
+expressServer.get("env");
+console.log(expressServer.get("env"));
 
 expressServer.get("/", (request, response) => {
   response.send("Hello world!, this is the express Server!");
