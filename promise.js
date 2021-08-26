@@ -19,10 +19,30 @@ const p = new Promise((resolve, reject) => {
   //...
   // returns a value or an error
   //the result is sent to the comsumer of the promise:
-  resolve(1); // passed the value to teh consumer of a promise
+  resolve(256); // passed the value to teh consumer of a promise
   reject(new Error("Message "));
 });
 
 p.then((result) => {
   console.log("Results:", result);
 });
+
+//From the callbacks available in th index.js
+/*
+  function getUser(id, callback) {
+  setTimeout(() => {
+    console.log("connecting to the database");
+    callback({ id: id, gitHubUsername: "Tonny" });
+  }, 2000);
+}
+
+*/
+
+function getUser(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("connecting to the database");
+      resolve({ id: id, gitHubUsername: "Tonny" });
+    });
+  });
+}
