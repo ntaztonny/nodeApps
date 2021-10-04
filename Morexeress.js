@@ -24,4 +24,4 @@ function Authentication(request, response, next) {
 }
 
 module.exports.logFunction = Logging;
-module.exports.AuthFunction = Authentication;
+module.exports.AuthFunction = Authentication  ;
