@@ -20,7 +20,7 @@ const Course = mongoose.model(
     name: String,
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Author",
+      ref: "Author", //This reference is to the author document
     },
   })
 );
@@ -47,12 +47,12 @@ async function createCourse(name, author) {
 }
 
 async function listCourses() {
-  const courses = await Course.find().select("name author");
+  const courses = await Course.find()
+    .populate("author", "name website -_id") //this helps to query the moongo DB to list the author details from a given reference
+    .select("name author");
   console.log(courses);
 }
 
-// createAuthor("Tonny", "My bio", "My Website");
-
-createCourse("Node Course", "615f8bedb448d86490afa98e");
-
-//listCourses();
+//createAuthor("Fabio", "C'est Lopez", "Fabio github");
+//createCourse("Vue js", "615f92bee8fe8272a0559f2b");
+listCourses();
