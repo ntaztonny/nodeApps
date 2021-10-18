@@ -48,7 +48,7 @@ async function createCourse(name, author) {
 
 async function listCourses() {
   const courses = await Course.find()
-    .populate("author", "name website -_id") //this helps to query the moongo DB to list the author details from a given reference
+    .populate("author", "name website  -_id") //this helps to query the moongo DB to list the author details from a given reference
     .select("name author");
   console.log(courses);
 }
