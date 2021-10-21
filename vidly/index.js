@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const users = require("./routes/user");
 const auth = require("./routes/auth");
+
 mongoose
   .connect("mongodb://localhost/vidly")
   .then(() => console.log("Connected to MongoDB..."))
