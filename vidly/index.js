@@ -1,10 +1,20 @@
+//npm modules
 const mongoose = require("mongoose");
-const genres = require("./routes/genres");
-const customers = require("./routes/customers");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 const express = require("express");
 const app = express();
+
+//inprogram modules
+const genres = require("./routes/genres");
+const customers = require("./routes/customers");
 const users = require("./routes/user");
 const auth = require("./routes/auth");
+
+// if (!config.get("jwtPrivateKey")) {
+//   console.log("JSON web token fatal error!");
+//   process.exit(1);
+// }
 
 mongoose
   .connect("mongodb://localhost/vidly")
