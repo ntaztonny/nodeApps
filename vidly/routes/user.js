@@ -29,7 +29,8 @@ router.post("/", async (req, res) => {
   //const newUser = await user.save();
   await user.save();
 
-  const token = jwt.sign({ _id: user._id }, config.get("jwkPrivateKey"));
+  const token = jwt.sign({ _id: user._id }, config.get("jwtPrivateKey"));
+
   res
     .header("x-auth-token", token)
     .send([user.name, user.email] + " Has been added to the database");

@@ -1,6 +1,5 @@
 //npm modules
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 const config = require("config");
 const express = require("express");
 const app = express();
@@ -11,10 +10,12 @@ const customers = require("./routes/customers");
 const users = require("./routes/user");
 const auth = require("./routes/auth");
 
-// if (!config.get("jwtPrivateKey")) {
-//   console.log("JSON web token fatal error!");
-//   process.exit(1);
-// }
+if (!config.get("jwtPrivateKey")) {
+  console.log("JSON web token fatal error! JWT isn't defined");
+  process.exit(1);
+}
+
+console.log(config.get("jwtPrivateKey"));
 
 mongoose
   .connect("mongodb://localhost/vidly")
